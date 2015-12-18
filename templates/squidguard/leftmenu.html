@@ -1,0 +1,33 @@
+{% extends "topmenu.html" %}
+{% block leftmenu %}
+<table>
+<tr>
+  <td class="sidemenu">
+    <table>
+    <tr><td>
+    Site ACLs
+    <ul>
+    {% for acl in site_acls %}
+        <li><a href="/squidguard/SiteACLs/{{acl}}/Site/">{{acl}}</a></li>
+    {% endfor %}
+    </ul>
+    </td></tr>
+    <tr><td>
+    Host ACLs
+    <table>
+    {% for acl in host_acls %}
+      <tr>
+      <td>{{acl}}:</td>
+      <td><a href="/squidguard/HostACLs/{{acl}}/Host/">hosts</a></td>
+      <td><a href="/squidguard/HostACLs/{{acl}}/SiteACLs_deny/">deny</a></td>
+      <td><a href="/squidguard/HostACLs/{{acl}}/SiteACLs_allow/">allow</a></td>
+      </tr>
+      </li>
+    {% endfor %}
+    </table>
+    </td></tr>
+    </table>
+  </td>
+</tr>
+</table>
+{% endblock %}

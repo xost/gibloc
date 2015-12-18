@@ -1,0 +1,6 @@
+{% for g in links %}
+  <br/>
+  {{g}}
+  <br/><a href="/mail/list/User/{{g.pk}}/">Адреса</a>
+  <br/><a href="/mail/list/Alias/{{g.pk}}/">Алиасы</a>
+{% endfor %}

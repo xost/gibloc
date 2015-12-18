@@ -1,0 +1,14 @@
+{% extends "session.html" %}
+{% block topmenu %}
+{% if user.is_authenticated %}
+  <a href="/squid">squid</a>
+  <a href="/squidguard">squidGuard</a>
+  <a href="/licenses">licenses</a>
+  <a href="/tasker">tasker</a>
+  <a href="/certs/list">certs</a>
+  <a href="/mail/list">mail</a>
+  <a href="//snorby.gib.loc" target="_blank">snorby</a>
+{% else %}
+  <a href="/squidguard/whitesites">whitesites</a><br/>
+{% endif %}
+{% endblock %}

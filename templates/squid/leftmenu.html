@@ -1,0 +1,35 @@
+{% extends "topmenu.html" %}
+{% block leftmenu %}
+<table>
+<tr>
+  <td>
+    <table>
+    <tr><td>
+    Host ACLs
+    <ul>
+    {% for acl in host_acls %}
+      <li><a href="/squid/Host/{{acl}}/">{{acl}}</a></li>
+    {% endfor %}
+    </ul>
+    </td></tr>
+    <tr><td>
+    Port ACLs
+    <ul>
+    {% for acl in port_acls %}
+      <li><a href="/squid/Port/{{acl}}/">{{acl}}</a></li>
+    {% endfor %}
+    </ul>
+    </td></tr>
+    <tr><td>
+    Url ACLs
+    <ul>
+    {% for acl in url_acls %}
+      <li><a href="/squid/Url/{{acl}}/">{{acl}}</a></li>
+    {% endfor %}
+    </ul>
+    </td></tr>
+    </table>
+  </td>
+</tr>
+</table>
+{% endblock %}

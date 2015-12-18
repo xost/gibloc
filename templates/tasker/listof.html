@@ -1,0 +1,25 @@
+{% extends 'tasker/leftmenu.html' %}
+{%load getattribute %}
+{% block content %}
+  <form method="post" action=""> {% csrf_token %}
+  <table>
+  {{form.as_table}}
+  </table>
+  <input type="submit" name="action" value="add">
+  <br/>
+  <table>
+  <tr><th></th>
+  {% for field in fields.values %}
+    <th>{{field}}</th>
+  {% endfor %}
+  </tr>
+  {% for member in members%}
+    <tr><td><input type="checkbox" name="select" value="{{member.id}}"/></td>
+    {% for field in fields.keys %}
+      <td><a href="/tasker/detailof/{{member}}">{{member|getattribute:field}}</a></td>
+    {% endfor %}
+    </tr>
+  {% endfor %}
+  </table>
+  </form>
+{% endblock %}

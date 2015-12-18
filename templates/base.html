@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01// EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
+<title>
+{% block title %} GRAND INVEST BANK {% endblock %}
+</title>
+</head>
+<body>
+<table class="base">
+<tr>
+  <td class="head_left">{% block logo %}GIB_LOGO{% endblock %}</td>
+  <td class="head_center">{% block banner%} banner  {% endblock %}</td>
+  <td class="head_right">{% block session %}session_info{% endblock %} </td>
+</tr>
+<tr>
+  <th colspan="3" class="topmenu">
+  {% block topmenu %}TOPMENU{% endblock %}
+  </th>
+</tr>
+<tr>
+  <td class="left">{% block leftmenu %}LEFTMENU{% endblock %}</td>
+  <td class="center">{% block content %}CONTENT{% endblock %}</td>
+  <td class="right"></td>
+</tr>
+</table>
+</body>
+</html>

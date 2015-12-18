@@ -1,0 +1,32 @@
+{% extends 'certs/leftmenu.html' %}
+{% block content %}
+<form method="POST" action=""> {% csrf_token %}
+  <input type="submit" name="action" value="Edit"/>
+<form/>
+<table>
+  <tr><td>Серийный номер:</td><td>{{object.item}}</td></tr>
+  <tr><td>Описание:</td><td>{{object.descr|linebreaks}}</td></tr>
+  <tr><td>Начало действия:</td><td>{{object.starttime}}</td></tr>
+  <tr><td>Конец действия:</td><td>{{object.deadtime}}</td></tr>
+  <tr><td>СКЗИ:</td><td>{{object.skzi}}</td></tr>
+  <tr>
+  <td>Вид ключевой информации:</td>
+  <td>
+  {% for i in object.type.all %}
+    {{i.item}},
+  {% endfor %}
+  </td>
+  </tr>
+  <tr>
+  <td>Область действия:</td>
+  <td>
+  {% for i in object.area.all %}
+    {{i.item}},
+  {% endfor %}
+  </td>
+  </tr>
+  <tr><td>Группа сертификатов:</td><td>{{object.group}}</td></tr>
+  <tr><td>Владелец:</td><td>{{object.owner}}</td></tr>
+  <tr><td>Издатель:</td><td>{{object.issuer}}</td></tr>
+</table>
+{% endblock %}

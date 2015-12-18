@@ -1,0 +1,8 @@
+{% extends 'licenses/leftmenu.html' %}
+{% block content %}
+<form action="" method="post" enctype="multipart/form-data"> {% csrf_token %}
+  <input type="file" name="lfile">
+  <input type="file" name="ofile">
+  <input type="submit" name="action" value="Import">
+</form>
+{% endblock %}

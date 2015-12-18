@@ -1,0 +1,65 @@
+#(0)#####################  #(1)########################  
+# LicenseACL:           #  #(0)# List of all licenses #  
+#  - MSLicenses         #  #   # in this ACL:         #  
+#  - MSOffice           #  #   #  - lic1              #  
+#  - CryptoPro <--- (1) #  #   #  - lic2 <-- (1.1)    #  
+#                       #  #   #  - lic3              #  
+# UnitACL:              #  #   #                      #  
+#   - Bank              #  #   #  form: add license   #  
+#   - Clients <--- (2)  #  #   #   [add]              #  
+#                       #  #   #   [delete selected]  #
+#                       #  #   #                      #  
+#                       #  #   #                      #  
+#                       #  #   #                      #  
+#                       #  #   #                      #  
+#                       #  #   #                      #  
+#                       #  #   #                      #  
+#                       #  #   #                      #  
+#                       #  #   #                      #  
+#                       #  #   #                      #  
+#                       #  #   #                      #  
+#########################  ############################  
+
+#(1.1)########################  #(1.2)##########################  #(1.2.1)###########################  #(1.2.2)###########################
+# (0) # Detail of this       #  # (0) # Detail of this         #  # (0)    # Detail of this         #  # (0)    # Detail of this         #
+#     # license:             #  #     # owner:                 #  #        # owner:                 #  #        # owner:                 #
+#     # * item               #  #     #  * item                #  #        #  * item                #  #        #  * item                #
+#     # * descr              #  #     #  * descr               #  #        #  * descr               #  #        #  * descr               #
+#     # * registration date  #  #     # List of licenses:      #  #        # List of licenses:      #  #        # List of licenses:      #
+#     # * change state date  #  #     #  - lic1                #  #        #  - lic1                #  #        #  - lic1                #
+#     # * inuse              #  #     #  - lic2 <--- (1.1)     #  #        #  - lic2 <--- (1.1)     #  #        #  - lic2 <--- (1.1)     #
+#     # if inuse:            #  #     #  - lic3                #  #        #  - lic3                #  #        #  - lic3                #
+#     #  - owner <--- (1.2)  #  #     #                        #  #        #                        #  #        #                        #
+#     #                      #  #     #                        #  #        #                        #  #        #                        #
+#     # form:release         #  #     # form:accociate         #  #        # List of ACLs:          #  #        # List of all licenses   #
+#     #  [release]           #  #     # with some one license  #  #        #  - ACL1                #  #        #  in this ACL:          #
+#     #                      #  #     # [accociate]<---(1.2.1) #  #        #  - ACL2 <---(1.2.2)    #  #        #  - lic1                #
+#     #                      #  #     # form:release selected  #  #        #  - ACL3                #  #        #  - lic2                #
+#     #                      #  #     # [release selected]     #  #        #                        #  #        #  - lic3                #
+#     #                      #  #     #                        #  #        #                        #  #        # [add selected]<---(1.2)#
+#     #                      #  #     #                        #  #        #                        #  #        #                        #
+#     #                      #  #     #                        #  #        #                        #  #        #                        #
+#     #                      #  #     #                        #  #        #                        #  #        #                        #
+##############################  ################################  ###################################  ###################################
+
+#(2)########################
+#(0)# List of all Owners   #
+#   # in whis ACL:         #
+#   #  - own1 <--- (1.2)   #
+#   #  - own2              #
+#   #  - own3              #
+#   #                      #
+#   #                      #
+#   #                      #
+#   #                      #
+#   #                      #
+#   # form:add new         #
+#   #  - item              #
+#   #  - descr             #
+#   #  [add]               #
+#   #  [delete selected]   #
+#   #                      #
+#   #                      #
+#   #                      #
+#   #                      #
+############################

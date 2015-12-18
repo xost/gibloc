@@ -1,0 +1,8 @@
+{% extends 'certs/leftmenu.html' %}
+{% block content %}
+<form method="POST">{% csrf_token %}
+<table>{{form.as_table}}</table>
+<!--{{form.as_p}}-->
+<input type="submit" name="submit" value="Save"/>
+</form>
+{% endblock %}

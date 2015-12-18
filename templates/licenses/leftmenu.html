@@ -1,0 +1,10 @@
+{% extends "topmenu.html" %}
+{% load leftmenu %}
+{% block leftmenu %}
+Группы лицензий
+{%navigation "LicenseG" %}
+<br/><a class="small" href="/licenses/create/LicenseG">+ Новый</a>
+<br/>Группы владельцев
+{%navigation "OwnerG" %}
+<br/><a class="small" href="/licenses/create/OwnerG">+ Новый</a>
+{% endblock %}

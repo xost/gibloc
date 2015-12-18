@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01// EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static "css/A4L_table.css" %}"/>
+</head>
+<body>
+  <table>
+    <tr>
+    <td>Номер</a></td>
+    <td>Начало действия</a></td>
+    <td>Конец действия</a></td>
+    <td>СКЗИ</a></td>
+    <td>Вид ключевой информации</a></td>
+    <td>Область действия</a></td>
+    <td>Владелец</a></td>
+    <td width="70px"></td>
+    </tr>
+  {%for item in object_list %}
+    <tr>
+    <td>{{item.item}}</a></td>
+    <td>{{item.starttime}}</td>
+    <td>{{item.deadtime}}</td>
+    <td>{{item.skzi}} {{item.skzi.version}}</td>
+    <td>
+    {% for i in item.type.all %}
+      {{i.item}},
+    {% endfor %}
+    </td>
+    <td>
+    {% for i in item.area.all %}
+      {{i.item}},
+    {% endfor %}
+    </td>
+    <td>{{item.owner}}</td>
+    <td></td>
+    </tr>
+  {% endfor%}
+  </table>
+</body>

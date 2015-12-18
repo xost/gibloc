@@ -1,0 +1,43 @@
+{% extends 'certs/leftmenu.html' %}
+{% load cycle from future %}
+{% block content %}
+  <form method="GET" action="">
+  <input type="submit" name="action" value="Create"/>
+  <input type="submit" name="action" value="Delete"/>
+<!--  <input type="submit" name="action" value="Report" onclick="this.form.target='_blank'; return true;"/> -->
+  <a href="/certs/list/?{{r_}}&action=Report" target="_blank">Печать</a>
+  <p/>
+  <table>
+    <tr>
+    <td></td>
+    <td><a href="/certs/list/?{{f_}}&action=Filter&sortby=item&reverse={{reverse}}">Номер</a></td>
+    <td><a href="/certs/list/?{{f_}}&action=Filter&sortby=starttime&reverse={{reverse}}">Начало действия</a></td>
+    <td><a href="/certs/list/?{{f_}}&action=Filter&sortby=deadtime&reverse={{reverse}}">Конец действия</a></td>
+    <td><a href="/certs/list/?{{f_}}&action=Filter&sortby=skzi&reverse={{reverse}}">СКЗИ</a></td>
+    <td><a href="/certs/list/?{{f_}}&action=Filter&sortby=type&reverse={{reverse}}">Вид ключевой информации</a></td>
+    <td><a href="/certs/list/?{{f_}}&action=Filter&sortby=area&reverse={{reverse}}">Область действия</a></td>
+    <td><a href="/certs/list/?{{f_}}&action=Filter&sortby=owner&reverse={{reverse}}">Владелец</a></td>
+    </tr>
+  {%for item in object_list %}
+    <tr class={% cycle "bg_a" "bg_b" %}>
+    <td><input type="checkbox" name="delete" value="{{item.pk}}"/></td>
+    <td><a href="/certs/detail/{{item.pk}}">{{item.item}}</a></td>
+    <td>{{item.starttime}}</td>
+    <td>{{item.deadtime}}</td>
+    <td>{{item.skzi}} {{item.skzi.version}}</td>
+    <td>
+    {% for i in item.type.all %}
+      {{i.item}},
+    {% endfor %}
+    </td>
+    <td>
+    {% for i in item.area.all %}
+      {{i.item}},
+    {% endfor %}
+    </td>
+    <td>{{item.owner}}</td>
+    </tr>
+  {% endfor%}
+  </table>
+  </form>
+{% endblock %}

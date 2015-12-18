@@ -1,0 +1,23 @@
+{% extends 'tasker/leftmenu.html' %}
+{% block content%}
+<form method="post" action=""> {% csrf_token %}
+<table>
+<tr><th>name:</th><td>{{object.name}} <a href="/tasker/edit/Task/{{object.id}}">edit</a></td><th>description:</th><td>{{object.description}}</td><td rowspan="8"><table>{{form.as_table}}</table><input type="submit" name="submit" value="add"></tr>
+<tr><th colspan="4">text:</th></tr>
+<tr><td colspan="4">{% autoescape off %}{{object.text}}{% endautoescape %}</td></tr>
+<tr><th>addtime:</th><td>{{object.addtime}}</td><th>deadtime:</th><td>{{object.deadtime}}</td></tr>
+<tr><th>repeat:</th><td>{{object.get_repeat_display}}</td><th>nday:</th><td>{{object.nday}}</td></tr>
+<tr><th>action:</th><td>{{object.get_action_display}}</td><th>private:</th><td>{{object.private}}</td></tr>
+<tr><th>owner:</th><td>{{object.owner}}</td><th>performer:</th><td>{{object.performer}}</td></tr>
+<tr><th>group:</th><td>{{object.group}}</td><th>state:</th><td>{{object.get_state_display}}</td></tr>
+</table>
+<table>
+<tr><td colspan="2">comments:</td></tr>
+{% for comment in comments %}
+  <tr><td width="20" rowspan="3"><input type="checkbox" name="select" value="{{comment.pk}}"></td><th>{{comment.owner}}</th><tr>
+  <tr><td>{{comment.comment|linebreaks}}</td><tr>
+{% endfor %}
+</table>
+<input type="submit" name="submit" value="delete">
+</form>
+{% endblock %}

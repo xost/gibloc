@@ -1,0 +1,34 @@
+{% extends 'licenses/leftmenu.html' %}
+{% block content %}
+  <table>
+  <tr>
+  <td>
+  <form method="post" action="" > {%csrf_token%}
+  <table>
+  <tr><td>item</td><td>{{object}}</td></tr>
+  <tr><td>descr</td><td>{{object.descr}}</td></tr>
+  <tr><td>registration</td><td>{{object.registration}}</td></tr>
+  <tr><td>change_state</td><td>{{object.changestate}}</td></tr>
+  <tr><td>g</td><td>{{object.g}}</td></tr>
+  {% if object.owner %}
+    <tr><td>owner</td><td><a href="/licenses/detail/Owner/{{object.owner.pk}}">{{object.owner}}</a></td></tr>
+    <tr><td colspan=2><a href="/licenses/report/License/{{object.pk}}" target="_blank">Распечатать акт</a></td></tr>
+    <tr><td><input type="submit" name="action" value="release"/></td></tr>
+  {% else %}
+  {% for g,item in owners.items %}
+    <tr><td colspan="2">{{g}}</td></tr>
+    {% for i in item %}
+      <tr>
+      <td><input type="radio" name="selected" value="{{i.id}}"/></td>
+      <td><a href="/licenses/detail/Owner/{{i.id}}">{{i}}</a></td>
+      </tr>
+    {% endfor %}
+  {% endfor %}
+  <tr><td colspan="2"><input type="submit" name="action" value="attach"/></td></tr>
+  </table>
+  </td>
+  {% endif %}
+  </tr>
+  </table>
+  </form>
+{% endblock %}

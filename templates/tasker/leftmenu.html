@@ -1,0 +1,9 @@
+{% extends "topmenu.html" %}
+{% block leftmenu %}
+<ul>TaskG
+{% for i in lmenu %}
+  <li><a href="/tasker/listof/TaskG/{{i.id}}">{{i.name}}</a></li>
+{% endfor %}
+<a class="small" href="/tasker/create/TaskG">+ Новый</a>
+</ul>
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends "topmenu.html" %}
+{% block leftmenu %}
+<form action="/certs/list/" method="GET">
+
+<table>
+{{form2.as_table}}
+</table>
+
+Группa
+{% for i in lmenu.group %}
+  <br/>
+  <input type="checkbox" name="f_group" value="{{i.pk}}"
+    {% if i.pk|stringformat:"i" in fltr.group %}
+      checked
+    {% endif %}
+  />
+  <a href="/certs/list/?f_group={{i.pk}}&action=Filter">- {{i.item}}</a>
+{% endfor %}
+<br/><a class="small" href="/certs/create/Group">+ Новый</a>
+
+<br/>Сотрудник:
+{% for i in lmenu.owner %}
+  <br/>
+  <input type="checkbox" name="f_owner" value="{{i.pk}}"
+    {% if i.pk|stringformat:"i" in fltr.owner %}
+      checked
+    {% endif %}
+  />
+  <a href="/certs/list/?f_owner={{i.pk}}&action=Filter">- {{i.item}}</a>
+{% endfor %}
+<br/><a class="small" href="/certs/create/Owner">+ Новый</a>
+
+<br/>Издатель
+{% for i in lmenu.issuer %}
+  <br/>
+  <input type="checkbox" name="f_issuer" value="{{i.pk}}"
+    {% if i.pk|stringformat:"i" in fltr.issuer %}
+      checked
+    {% endif %}
+  />
+  <a href="/certs/list/?f_issuer={{i.pk}}&action=Filter">- {{i.item}}</a>
+{% endfor %}
+<br/><a class="small" href="/certs/create/Issuer">+ Новый</a>
+
+<br/>СКЗИ
+{% for i in lmenu.skzi %}
+  <br/>
+  <input type="checkbox" name="f_skzi" value="{{i.pk}}"
+    {% if i.pk|stringformat:"i" in fltr.skzi %}
+      checked
+    {% endif %}
+  />
+  <a href="/certs/list/?f_skzi={{i.pk}}&action=Filter">- {{i.item}}</a>
+{% endfor %}
+<br/><a class="small" href="/certs/create/Skzi">+ Новый</a>
+
+<br/>Тип ключевой информации
+{% for i in lmenu.type %}
+  <br/>
+  <input type="checkbox" name="f_type" value="{{i.pk}}"
+    {% if i.pk|stringformat:"i" in fltr.type %}
+      checked
+    {% endif %}
+  />
+  <a href="/certs/list/?f_type={{i.pk}}&action=Filter">- {{i.item}}</a>
+{% endfor %}
+<br/><a class="small" href="/certs/create/Type">+ Новый</a>
+
+<br/>Область действия
+{% for i in lmenu.area %}
+  <br/>
+  <input type="checkbox" name="f_area" value="{{i.pk}}"
+    {% if i.pk|stringformat:"i" in fltr.area %}
+      checked
+    {% endif %}
+  />
+  <a href="/certs/list/?f_area={{i.pk}}&action=Filter">- {{i.item}}</a>
+{% endfor %}
+<br/><a class="small" href="/certs/create/Area">+ Новый</a>
+<br/>Начало действия:
+<br/>С: <input type="text" name="startgt" value="{{dates.startgt}}"/>
+<br/>До: <input type="text" name="startlt" value="{{dates.startlt}}"/>
+
+<br/>Конец действия:
+<br/>С: <input type="text" name="deadgt" value="{{dates.deadgt}}"/>
+<br/>До: <input type="text" name="deadlt" value="{{dates.deadlt}}"/>
+
+<br/><input type="submit" name="action" value="Filter"/>
+</form>
+{% endblock %}

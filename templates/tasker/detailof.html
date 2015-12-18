@@ -1,0 +1,29 @@
+{% extends 'tasker/leftmenu.html '%}
+{% block content%}
+<table>
+<tr><th>name:</th>
+<td>{{object.name}}</td></tr>
+<tr><th>description:</th>
+<td>{{object.description}}</td></tr>
+<tr><th>text:</th>
+<td>{{object.text}}</td></tr>
+<tr><th>addtime:</th>
+<td>{{object.addtime}}</td></tr>
+<tr><th>deadtime:</th>
+<td>{{object.deadtime}}</td></tr>
+<tr><th>repeat:</th>
+<td>{{object.repeat}}</td></tr>
+<tr><th>nday:</th>
+<td>{{object.nday}}</td></tr>
+<tr><th>action:</th>
+<td>{{object.action}}</td></tr>
+<tr><th>private:</th>
+<td>{{object.private}}</td></tr>
+<tr><th>owner:</th>
+<td>{{object.owner}}</td></tr>
+<tr><th>performer:</th>
+<td>{{object.performer}}</td></tr>
+<tr><th>group:</th>
+<td>{{object.group}}</td></tr>
+</table>
+{% endblock %}

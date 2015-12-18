@@ -1,0 +1,9 @@
+{% extends 'certs/leftmenu.html' %}
+{% block content %}
+<form method="GET" action="">
+<table>
+  {{form.as_table}}
+</table>
+<input type="button" value="На печать" onclick="window.open('/certs/report/print','report','height=600, width=800')"/>
+</form>
+{% endblock %}

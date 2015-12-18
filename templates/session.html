@@ -1,0 +1,19 @@
+{% extends "banner.html" %}
+{% block session %}
+  Вы зашли как:<br/>
+  {% if user.is_authenticated %}
+    <span class="red">{{ user.username }}</span>
+    <form method="post" action="/accounts/logout/"> {% csrf_token %}
+    <input type="submit" name="action" value="logout"/>
+    </form>
+  {% else %}
+    {{path}}
+    {{response}}
+    <span class="red">Гость</span>
+    <form method="post" action="/accounts/login/"> {% csrf_token %}
+    <input type="text" name="username"/>
+    <input type="password" name="password"/>
+    <input type="submit" name="action" value="login"/>
+    </form>
+  {% endif %}
+{% endblock %}

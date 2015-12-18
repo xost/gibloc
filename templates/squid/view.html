@@ -1,0 +1,31 @@
+{% extends "squid/leftmenu.html" %}
+{% block content %}
+<table>
+  <tr>
+  <td>
+    <table>
+    <tr>
+      <td colspan="2">member</td><td>description</td>
+    </tr>
+    <form method="GET" action="">
+    {% for member in members %}
+      <tr>
+        <td><input type="checkbox" name="select" value="{{member}}"/></td><td><a href="{{member}}">{{member}}</a></td><td>{{member.descr}}</td>
+      </tr>
+    {% endfor %}
+    </table>
+  </td>
+  <td>
+    <input type="submit" name="action" value="export"/>
+    {% if form %}
+      <table>
+      {{form.as_table}}
+      </table>
+      <p/><input type="submit" name="action" value="add"/>
+      <input type="submit" name="action" value="delete"/>
+    {% endif %}
+    </form>
+  </td>
+  </tr>
+</table>
+{% endblock %}

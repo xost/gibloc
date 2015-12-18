@@ -1,0 +1,33 @@
+{% extends 'tasker/leftmenu.html' %}
+{%load getattribute%}
+{% block content %}
+  <form method="post"> {% csrf_token %}
+  <a href="/tasker/create/TaskG/{{TaskG}}">Create new</a>
+  <br/>
+  <table>
+  <tr>
+    <th></th>
+    <th><a href="?order_by=name&reverse={{reverse}}">name</a></th>
+    <th>description</th>
+    <th><a href="?order_by=addtime&reverse={{reverse}}">addtime</a></th>
+    <th><a href="?order_by=deadtime&reverse={{reverse}}">deadtime</a></th>
+    <th><a href="?order_by=owner&reverse={{reverse}}">owner</a></th>
+    <th><a href="?order_by=performer&reverse={{reverse}}">performer</a></th>
+    <th><a href="?order_by=state&reverse={{reverse}}">state</a></th>
+  </tr>
+  {% for object in object_list%}
+    <tr>
+      <td><input type="checkbox" name="select" value="{{object.id}}"/></td>
+      <td><a href="/tasker/detailof/Task/{{object.id}}">{{object.name}}</a></td>
+      <td>{{object.description}}</td>
+      <td>{{object.addtime}}</td>
+      <td>{{object.deadtime}}</td>
+      <td>{{object.owner}}</td>
+      <td>{{object.performer}}</td>
+      <td>{{object.get_state_display}}</td>
+    </tr>
+  {% endfor %}
+  </table>
+  <input type="submit" name="submit" value="Delete">
+  </form>
+{% endblock %}

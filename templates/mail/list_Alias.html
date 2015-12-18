@@ -1,0 +1,28 @@
+{% extends 'mail/leftmenu.html' %}
+{% load cycle from future %}
+{% block content %}
+  <form action="" method="post"> {% csrf_token %}
+  <table>
+  {{ form.as_table }}
+  </table>
+  <input type="submit" name="action" value="Add" />
+  <input type="submit" name="action" value="Delete" />
+  <table>
+  <tr>
+  <th colspan=2><a href="?order_by=src&reverse={{reverse}}">Алиас</a></th>
+  <th>Расылка</th>
+  <th>Описание</th>
+  </tr>
+  <tbody>
+  {% for item in object_list %}
+    <tr class={% cycle "bg_a" "bg_b" %}>
+    <td class="center"><input type="checkbox" name="selected" value="{{item.pk}}"/></td>
+    <td><a href="/mail/update/Alias/{{item.pk}}">{{item.src}}</a></td>
+    <td>{{item.dst}}</td>
+    <td>{{item.descr}}</td>
+    </tr> 
+  {% endfor %}
+  </tbody>
+  </table>
+  </form>
+{% endblock %}

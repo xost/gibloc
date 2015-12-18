@@ -1,0 +1,40 @@
+{% extends 'licenses/leftmenu.html' %}
+{% block content %}
+  <form action="" method="post">{% csrf_token %}
+  <table>
+  <tr>
+  <td>
+  <table>
+  <tr><td>Наименование:</td><td>{{object}}</td></tr>
+  <tr><td>Описание:</td><td>{{object.descr}}</td></tr>
+  <tr><td>Дата регистрации:</td><td>{{object.registration}}</td></tr>
+  <tr><td>Группа:</td><td><a href="/licenses/list/OwnerG/{{object.group.pk}}">{{object.group}}</a></td></tr>
+  {% if my_inuse.items %}
+  {% for g,item in my_inuse.items %}
+    <tr><td colspan="2">{{g}}</td></tr>
+    {% for i in item %}
+      <tr>
+      <td><input type="checkbox" name="selected" value="{{i.pk}}"/></td>
+      <td><a href="/licenses/detail/License/{{i.pk}}">{{i}}</a></td>
+      </tr>
+    {% endfor %}
+  {% endfor %}
+  <tr><td colspan="2"><input type="submit" name="action" value="release"/></td></tr>
+  {% endif %}
+  {% for g,item in not_inuse.items %}
+    <tr><td colspan="2"><hr>{{g}}</td></tr>
+    {% for i in item %}
+      <tr>
+      <td><input type="checkbox" name="selected_toadd" value="{{i.pk}}"/></td>
+      <td><a href="/licenses/detail/License/{{i.pk}}">{{i}}</a></td>
+      </tr>
+    {% endfor %}
+  {% endfor %}
+  <tr><td colspan="2"><input type="submit" name="action" value="add"/></td></tr>
+  </table>
+  </td>
+  </tr>
+  </table>
+  </form>
+  {{not_inuse.CryptoPro36}}
+{% endblock %}

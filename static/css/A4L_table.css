@@ -1,0 +1,21 @@
+body {
+  height: 595px;
+  width: 842px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size:  12px;
+}
+
+table{
+  table-layout: fixed;
+  word-wrap:    break-word;
+  margin-left:  auto;
+  margin-right: auto;
+  text-align:   left;
+  border-collapse:  collapse;
+  vertical-align: top;
+}
+
+table td, table th {
+  border: 1px solid black;
+}
