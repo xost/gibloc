@@ -5,3 +5,8 @@ body {
   margin-right: auto;
   font:  18px;
 }
+
+p.header{
+  margin: 25px;
+  text-align: center;
+}
