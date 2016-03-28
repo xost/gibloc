@@ -2,6 +2,7 @@
 {% block content %}
 <form method="POST" action=""> {% csrf_token %}
   <input type="submit" name="action" value="Edit"/>
+  <input type="submit" name="action" value="Destroy"/>
 <form/>
 <table>
   <tr><td>Серийный номер:</td><td>{{object.item}}</td></tr>

@@ -79,3 +79,8 @@ a.small{
   font-size:  13px;
   font-style: italic;
 }
+
+p.header{
+  margin: 25px;
+  text-align: center;
+}

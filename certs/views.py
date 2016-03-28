@@ -133,6 +133,9 @@ class Detail(LMenu,DetailView):
   def post(self,request,*argv,**kwargs):
     if request.POST.get('action')=='Edit':
       return redirect('/certs/edit/%s'%self.kwargs.get('pk'))
+    elif request.POST.get('action')=='Destroy':
+      self.template_name='certs/destroy.html'
+    return super(Detail,self).get(request,argv,kwargs)
 
 class Edit(LMenu,UpdateView):
   template_name='certs/edit.html'

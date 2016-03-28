@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01// EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static "css/A4L_table.css" %}"/>
+</head>
+<body>
+  <p class="header">
+    <h2>АКТ</h2>
+    <h3>уничтожения закрытых электронных ключей</h3>
+    <br/>
+  </p>
+  <p>
+    {{object.deadtime}}
+  </p>
+  <p>
+    Акт утверждает, что в связи с истечением срока действия уничтожены электронные ключи:
+  </p>
+  <p>
+    Владелец ключа:<br/>
+    {{object.owner}}<br/>
+    Серийный номер ключа:<br/>
+    {{object.item}}<br/>
+    Медодуничтожения:<br/>
+    физический
+  </p>
+  <p>
+    Ключии уничтожены в присутствии следующих лиц:
+  </p>
+  <p class="header">
+    <table>
+    <tr rowspan=2>
+      <td>Владелец ключа:<td>
+    </tr>
+    <tr>
+      <td>{{object.owner}}</td>
+      <td>_______________</td>
+    </tr>
+     <tr rowspan=2>
+      <td>Зам. председателя правления:<td>
+    </tr>
+    <tr>
+      <td>Авраменко В.Л.</td>
+      <td>_______________</td>
+    </tr>
+     <tr rowspan=2>
+      <td>Нач. отдела внутреннего контроля:<td>
+    </tr>
+     <tr>
+      <td>Николов З.Б.</td>
+      <td>_______________</td>
+    </tr>
+     <tr rowspan=2>
+      <td>Администратор ИБ:<td>
+    </tr>
+    <tr>
+      <td>Васерчук Д.В.</td>
+      <td>_______________</td>
+    </tr>
+    </table>
+  </p>
+</body>
