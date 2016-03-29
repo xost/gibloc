@@ -17,17 +17,24 @@
     Акт утверждает, что в связи с истечением срока действия уничтожены электронные ключи:
   </p>
   <p align="jistify">
-    Владелец ключа:<br/>
-    {{object.owner}}<br/>
-    Серийный номер ключа:<br/>
-    {{object.item}}<br/>
-    Область действия:<br/>
-    de    qq
-    {% foreach area in object.area.all %}
-    {{object.area}}
+    Владелец ключа:
+    <li><ol>
+    {{object.owner}}
+    </ol></li>
+    Серийный номер ключа:
+    <li><ol>
+    {{object.item}}
+    </ol></li>
+    Область действия:
+    {% for area in object.area.all %}
+    <li><ol>
+      {{area.item}}
+    </ol></li>
     {% endfor %}
-    Метод уничтожения:<br/>
+    Метод уничтожения:
+    <li><ol>
     физический
+    </ol></li>
   </p>
   <p align="jistify">
     Ключии уничтожены в присутствии следующих лиц:
