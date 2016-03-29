@@ -21,7 +21,12 @@
     {{object.owner}}<br/>
     Серийный номер ключа:<br/>
     {{object.item}}<br/>
-    Медодуничтожения:<br/>
+    Область действия:<br/>
+    de    qq
+    {% foreach area in object.area.all %}
+    {{object.area}}
+    {% endfor %}
+    Метод уничтожения:<br/>
     физический
   </p>
   <p align="jistify">
@@ -36,6 +41,9 @@
       <td>{{object.owner}}</td>
       <td>_______________</td>
     </tr>
+    </table>
+    <br/>
+    <table align="center">
      <tr rowspan=2>
       <td>Зам. председателя правления:<td>
     </tr>
