@@ -90,7 +90,7 @@ class List(LMenu,ListView):
       self.err['deadgt']=('Неверный формат даты')
       raise ValueError(e)
     try:
-      self.deadlt=datetime.datetime.strptime(request.GET.get('datelt'),'%d/%m/%Y').date() if request.GET.get('deadlt') else ''
+      self.deadlt=datetime.datetime.strptime(request.GET.get('deadlt'),'%d/%m/%Y').date() if request.GET.get('deadlt') else ''
     except ValueError,e:
       self.err['deadlt']=('Неверный формат даты')
       raise ValueError(e)
