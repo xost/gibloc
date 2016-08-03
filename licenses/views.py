@@ -148,43 +148,43 @@ class ReportOfLicense(Detail):
     self.template_name=self.templates.get(str(obj.group),'notfound')
     return obj
 
-#class Import(TemplateView):
-#  template_name='licenses/import.html'
-#
-#  def get_context_data(self,*args,**kwargs):
-#    kwargs['LicenseG']=models.LicenseG.objects.all().order_by('item')
-#    kwargs['OwnerG']=models.OwnerG.objects.all().order_by('item')
-#    return super(Import,self).get_context_data(*args,**kwargs)
-#
-#  def post(self,request,*args,**kwargs):
-#    from datetime import datetime
-#    lfile=request.FILES.get('lfile')
-#    ofile=request.FILES.get('ofile')
-#    od={}
-#    ownergroup=models.OwnerG.objects.get(item='Clients')
-#    for o in ofile:
-#      o=o.strip()
-#      o=o.split(',')
-#      od[o[1]]=o[0]
-#    for l in lfile:
-#      l=l.strip()
-#      l=l.split(',')
-#      if l[2]=='CryptoPro30':
-#        descr=u'Крипто Про CSP 3.0'
-#      else:
-#        descr=u'Крипто Про CSP 3.6'
-#      licgroup=models.LicenseG.objects.get(item=l[2])
-#      try:
-#        orgname=od[l[0]]
-#      except KeyError:
-#        owner=None
-#      else:
-#        owner=models.Owner(item=orgname,group=ownergroup)
-#        try:
-#          owner.save()
-#        except:
-#          owner=models.Owner.objects.get(item=orgname)
-#      license=models.License(item=l[1],descr='',changestate=datetime.now(),owner=owner,group=licgroup)
-#      license.save()
-#    return super(Import,self).get(request,*args,**kwargs)
+class Import(TemplateView):
+  template_name='licenses/import.html'
+
+  def get_context_data(self,*args,**kwargs):
+    kwargs['LicenseG']=models.LicenseG.objects.all().order_by('item')
+    kwargs['OwnerG']=models.OwnerG.objects.all().order_by('item')
+    return super(Import,self).get_context_data(*args,**kwargs)
+
+  def post(self,request,*args,**kwargs):
+    from datetime import datetime
+    lfile=request.FILES.get('lfile')
+    ofile=request.FILES.get('ofile')
+    od={}
+    ownergroup=models.OwnerG.objects.get(item='Clients')
+    for o in ofile:
+      o=o.strip()
+      o=o.split(',')
+      od[o[1]]=o[0]
+    for l in lfile:
+      l=l.strip()
+      l=l.split(',')
+      if l[2]=='CryptoPro30':
+        descr=u'Крипто Про CSP 3.0'
+      else:
+        descr=u'Крипто Про CSP 3.6'
+      licgroup=models.LicenseG.objects.get(item=l[2])
+      try:
+        orgname=od[l[0]]
+      except KeyError:
+        owner=None
+      else:
+        owner=models.Owner(item=orgname,group=ownergroup)
+        try:
+          owner.save()
+        except:
+          owner=models.Owner.objects.get(item=orgname)
+      license=models.License(item=l[1],descr='',changestate=datetime.now(),owner=owner,group=licgroup)
+      license.save()
+    return super(Import,self).get(request,*args,**kwargs)
 

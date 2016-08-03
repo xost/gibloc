@@ -44,7 +44,7 @@ urlpatterns = patterns('',
     url(r'^licenses/detail/(?P<model>\License)/(?P<pk>\w+)/$',licenses.views.DetailOfLicense.as_view()),
     url(r'^licenses/detail/(?P<model>\Owner)/(?P<pk>\w+)/$',licenses.views.DetailOfOwner.as_view()),
     url(r'^licenses/report/(?P<model>License)/(?P<pk>\w+)/$',licenses.views.ReportOfLicense.as_view()),
-    #url(r'^licenses/import/$',licenses.views.Import.as_view()),
+    url(r'^licenses/import/$',licenses.views.Import.as_view()),
     #tasker
     url(r'^tasker/$',tasker.views.SimpleView.as_view()),
     url(r'^tasker/listof/(?P<model>TaskG)/(?P<pk>\w+)/$',tasker.views.ListOfTask.as_view()),
