@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
 from django.contrib import admin
 from django.views.generic import *
 from django.contrib.auth.views import login
@@ -16,7 +16,7 @@ admin.autodiscover()
 # from django.contrib import admin
 # admin.autodiscover()
 
-urlpatterns = patterns('',
+urlpatterns = [
     # Examples:
     # url(r'^$', 'gibloc.views.home', name='home'),
     # url(r'^gibloc/', include('gibloc.foo.urls')),
@@ -63,4 +63,4 @@ urlpatterns = patterns('',
     url(r'^mail/list/(?P<model>\w+)/(?P<pk>\w+)/$',mail.views.List.as_view()),
     url(r'^mail/create/(?P<model>\w+)/$',mail.views.Create.as_view()),
     url(r'^mail/update/(?P<model>\w+)/(?P<pk>\w+)/$',mail.views.Update.as_view()),
-)
+]
