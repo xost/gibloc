@@ -3,7 +3,7 @@ import os
 # Django settings for gibloc project.
 
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+#TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -101,10 +101,10 @@ SECRET_KEY = 'r&-=p20m7t3m4o)8*os%v$4g9z55fv9*92o+vt=y=so-%0(&hy'
 ##     'django.template.loaders.eggs.Loader',
 #)
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-  'django.contrib.auth.context_processors.auth',
-  'django.core.context_processors.request',
-)
+#TEMPLATE_CONTEXT_PROCESSORS = (
+#  'django.contrib.auth.context_processors.auth',
+#  'django.core.context_processors.request',
+#)
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
@@ -140,6 +140,7 @@ TEMPLATES=[
         # Insert your TEMPLATE_CONTEXT_PROCESSORS here or use this
         # list if you haven't customized them:
         'django.contrib.auth.context_processors.auth',
+        'django.core.context_processors.request',
         'django.template.context_processors.debug',
         'django.template.context_processors.i18n',
         'django.template.context_processors.media',
