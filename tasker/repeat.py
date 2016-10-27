@@ -29,13 +29,13 @@ class EveryNDay(object):
     state_text=self.obj.choices[int(self.obj.state)-1][1]
     isactive=False if state_text in self.obj.notactive else True
     if isactive and self.obj.action:
-      print "--------"
-      print 'task=%s, lastime=%s, deadtime=%s, nday=%s, nexttime=%s'%(self.obj,self.lasttime,self.deadtime,self.obj.nday,self.nexttime)
+      #print "--------"
+      #print 'task=%s, lastime=%s, deadtime=%s, nday=%s, nexttime=%s'%(self.obj,self.lasttime,self.deadtime,self.obj.nday,self.nexttime)
       #if ((self.nexttime<=self.today and self.nexttime<=self.deadtime) or
       if ((self.nexttime<=self.today and self.le_date(self.nexttime,self.deadtime)) or
           self.lasttime==self.today or
           (self.deadtime and self.deadtime==self.today)):
-        print 'task=%s, lastime=%s, deadtime=%s, nday=%s, nexttime=%s'%(self.obj,self.lasttime,self.deadtime,self.obj.nday,self.nexttime)
+        #print 'task=%s, lastime=%s, deadtime=%s, nday=%s, nexttime=%s'%(self.obj,self.lasttime,self.deadtime,self.obj.nday,self.nexttime)
         action=actions.actions.get_choice(self.obj.action)(self.obj)
         try:
           action()
