@@ -102,7 +102,7 @@ SECRET_KEY = 'r&-=p20m7t3m4o)8*os%v$4g9z55fv9*92o+vt=y=so-%0(&hy'
 #)
 
 #TEMPLATE_
-CONTEXT_PROCESSORS = (
+#CONTEXT_PROCESSORS = (
 #  'django.contrib.auth.context_processors.auth',
 #  'django.core.context_processors.request',
 #)
