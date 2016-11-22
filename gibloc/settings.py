@@ -228,6 +228,9 @@ LOGGING = {
 }
 
 # Added by myself
+
+#AUTH_USER_MODEL=auth.User
+
 SMTP_HOST='10.0.1.120'
 SMTP_PORT='25'
 SMTP_LOGIN=''

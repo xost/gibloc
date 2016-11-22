@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.core.wsgi import get_wsgi_application
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
@@ -18,13 +19,24 @@ SMTP={'HOST':'10.0.1.120',
       'PASSWD':'',
       }
 
-settings.configure(DATABASES=DATABASES,SMTP=SMTP)
+INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'tasker',
+    'certs',
+)
+
+settings.configure(DATABASES=DATABASES,SMTP=SMTP,INSTALLED_APPS=INSTALLED_APPS)
 application = get_wsgi_application()
 
 import django.db.models
 import datetime
-import tasker.models,tasker.choice,tasker.repeat
-import certs.models,certs.choice,certs.repeat
+import tasker.models
+import tasker.choice
+import tasker.repeat
+import certs.models
+import certs.choice
+import certs.repeat
 
 class Tasker(object):
   name=''
