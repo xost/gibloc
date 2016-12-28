@@ -170,6 +170,7 @@ INSTALLED_APPS = (
     'tasker',
     'certs',
     'mail',
+    'hashez',
 )
 
 # A sample logging configuration. The only tangible logging
