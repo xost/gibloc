@@ -7,9 +7,9 @@ from django.db import models
 class Client(models.Model):
 
   def __unicode__(self):
-    return self.item
+    return self.client
 
-  item=models.CharField(unique=True,max_length=128)
+  client=models.CharField(max_length=128)
   descr=models.TextField(blank=True)
   registration=models.DateTimeField(auto_now_add=True)
 
@@ -23,12 +23,11 @@ class File(models.Model):
          )
 
   def __unicode__(self):
-    return self.item
+    return self.path
     
-  item=models.CharField(max_length=512)
+  path=models.CharField(max_length=512)
   checksum=models.BinaryField(null=True)
   state=models.CharField(max_length=32,choices=states)
-  registration=models.DateTimeField(auto_now_add=True)
   recalculate=models.DateTimeField(auto_now_add=False)
   client=models.ForeignKey(Client)
 
