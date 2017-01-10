@@ -19,6 +19,7 @@ class File(models.Model):
           ('UPDATED','UPDATED'),
           ('FILESYSTEMERROR','FILESYSTEMERROR'),
           ('CRYPTOERROR','CRYPTOERROR'),
+          ('NEW','NEW'),
           ('EMPTY','EMPTY'),
          )
 
@@ -44,3 +45,5 @@ class Event(models.Model):
   client=models.ForeignKey(Client)
   eType=models.CharField(max_length=32,choices=states)
   lasttime=models.DateTimeField(auto_now_add=True)
+
+class Check
