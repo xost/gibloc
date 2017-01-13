@@ -34,7 +34,7 @@ class File(models.Model):
 
 class Event(models.Model):
 
-  states=(('PASS','PASS'),
+  states=(('CKECK','CHECK'),
           ('FAIL','FAIL'),
          )
 
@@ -45,4 +45,10 @@ class Event(models.Model):
   eType=models.CharField(max_length=32,choices=states)
   lasttime=models.DateTimeField(auto_now_add=True)
 
-class Check
+class Diff(models.Model):
+
+  def __unicode__(self):
+    pass
+
+  event=models.ForeignKey(Event)
+  file=models.ForeignKey(File)
