@@ -58,5 +58,4 @@ class Diff(models.Model):
 
   event=models.ForeignKey(Event)
   path=models.CharField(max_length=512)
-  client=models.ForeignKey(Client)
   state=models.CharField(max_length=32,choices=states)
