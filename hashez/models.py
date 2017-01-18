@@ -4,29 +4,29 @@ from __future__ import unicode_literals
 
 from django.db import models
 
+states=(('OK','OK'),
+        ('UPDATED','UPDATED'),
+        ('FILESYSTEMERROR','FILESYSTEMERROR'),
+        ('CRYPTOERROR','CRYPTOERROR'),
+        ('NEW','NEW'),
+        ('EMPTY','EMPTY'),
+       )
+
 class Client(models.Model):
 
   def __unicode__(self):
     return self.client
 
-  client=models.CharField(max_length=128)
+  client=models.CharField(max_length=128,unique=True)
   descr=models.TextField(blank=True)
   registred=models.DateTimeField(auto_now_add=True)
 
 class File(models.Model):
 
-  states=(('OK','OK'),
-          ('UPDATED','UPDATED'),
-          ('FILESYSTEMERROR','FILESYSTEMERROR'),
-          ('CRYPTOERROR','CRYPTOERROR'),
-          ('NEW','NEW'),
-          ('EMPTY','EMPTY'),
-         )
-
   def __unicode__(self):
     return self.path
     
-  path=models.CharField(max_length=512)
+  path=models.CharField(max_length=255)
   fsCount=models.IntegerField();
   checksum=models.BinaryField(null=True)
   state=models.CharField(max_length=32,choices=states)
@@ -38,15 +38,17 @@ class File(models.Model):
 
 class Event(models.Model):
 
-  states=(('CKECK','CHECK'),
-          ('FAIL','FAIL'),
-         )
+  types=(('CKECK','CHECK'),
+         ('UPDATE','UPDATE'),
+         ('NEWCLIENT','NEWCLIENT'),
+         ('NEWFILESET','NEWFILESET'),
+        )
 
   def __unicode__(self):
     return self.client
 
   client=models.ForeignKey(Client)
-  eventType=models.CharField(max_length=32,choices=states)
+  eventType=models.CharField(max_length=32,choices=types)
   happened=models.DateTimeField(auto_now_add=True)
 
 class Diff(models.Model):
@@ -56,6 +58,5 @@ class Diff(models.Model):
 
   event=models.ForeignKey(Event)
   path=models.CharField(max_length=512)
-  checksum=models.BinaryField(null=True)
   client=models.ForeignKey(Client)
   state=models.CharField(max_length=32,choices=states)
