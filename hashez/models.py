@@ -11,7 +11,7 @@ class Client(models.Model):
 
   client=models.CharField(max_length=128)
   descr=models.TextField(blank=True)
-  registration=models.DateTimeField(auto_now_add=True)
+  registred=models.DateTimeField(auto_now_add=True)
 
 class File(models.Model):
 
@@ -29,7 +29,7 @@ class File(models.Model):
   path=models.CharField(max_length=512)
   checksum=models.BinaryField(null=True)
   state=models.CharField(max_length=32,choices=states)
-  recalculate=models.DateTimeField(auto_now_add=False)
+  updated=models.DateTimeField(auto_now_add=False)
   client=models.ForeignKey(Client)
 
 class Event(models.Model):
@@ -42,8 +42,8 @@ class Event(models.Model):
     return self.client
 
   client=models.ForeignKey(Client)
-  eType=models.CharField(max_length=32,choices=states)
-  lasttime=models.DateTimeField(auto_now_add=True)
+  eventType=models.CharField(max_length=32,choices=states)
+  happened=models.DateTimeField(auto_now_add=True)
 
 class Diff(models.Model):
 
@@ -51,4 +51,7 @@ class Diff(models.Model):
     pass
 
   event=models.ForeignKey(Event)
-  file=models.ForeignKey(File)
+  path=models.CharField(max_length=512)
+  checksum=models.BinaryField(null=True)
+  client=models.ForeignKey(Client)
+  state=models.CharField(max_length=32,choices=states)
