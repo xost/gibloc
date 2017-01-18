@@ -27,10 +27,14 @@ class File(models.Model):
     return self.path
     
   path=models.CharField(max_length=512)
+  fsCount=models.IntegerField();
   checksum=models.BinaryField(null=True)
   state=models.CharField(max_length=32,choices=states)
   updated=models.DateTimeField(auto_now_add=False)
   client=models.ForeignKey(Client)
+
+  class Meta():
+    unique_together=('path','fsCount')
 
 class Event(models.Model):
 
