@@ -34,7 +34,7 @@ class File(models.Model):
   client=models.ForeignKey(Client)
 
   class Meta():
-    unique_together=('path','fsCount')
+    unique_together=('path','fsCount','id')
 
 class Event(models.Model):
 
