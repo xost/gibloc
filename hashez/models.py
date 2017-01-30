@@ -21,16 +21,23 @@ class Client(models.Model):
   descr=models.TextField(blank=True)
   registred=models.DateTimeField(auto_now_add=True)
 
+class FileSet(models.Model):
+
+  def __unicode__(self):
+    return self.id
+
+  registred=models.DataTimeField(auto_now_add=True)
+
 class File(models.Model):
 
   def __unicode__(self):
     return self.path
     
   path=models.CharField(max_length=255)
-  fsCount=models.IntegerField();
   checksum=models.BinaryField(null=True)
   state=models.CharField(max_length=32,choices=states)
   updated=models.DateTimeField(auto_now_add=False)
+  fsCount=models.ForeignKey(FileSet)
   client=models.ForeignKey(Client)
 
   class Meta():
