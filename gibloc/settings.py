@@ -20,6 +20,7 @@ DATABASES = {
         'PASSWORD': 'gibloc',
         'HOST': 'jaba.gib.loc',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '',                      # Set to empty string for default.
+        'init_command': "SET sql_mode='STRICT_TRANS_TABLES"
     }
 }
 

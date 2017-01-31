@@ -26,7 +26,8 @@ class FileSet(models.Model):
   def __unicode__(self):
     return self.id
 
-  registred=models.DataTimeField(auto_now_add=True)
+  registred=models.DateTimeField(auto_now_add=True)
+  client=models.ForeignKey(Client)
 
 class File(models.Model):
 
@@ -37,11 +38,10 @@ class File(models.Model):
   checksum=models.BinaryField(null=True)
   state=models.CharField(max_length=32,choices=states)
   updated=models.DateTimeField(auto_now_add=False)
-  fsCount=models.ForeignKey(FileSet)
-  client=models.ForeignKey(Client)
+  fileSet=models.ForeignKey(FileSet)
 
   class Meta():
-    unique_together=('path','fsCount','id')
+    unique_together=('path','fileSet')
 
 class Event(models.Model):
 
@@ -54,15 +54,17 @@ class Event(models.Model):
   def __unicode__(self):
     return self.client
 
-  client=models.ForeignKey(Client)
   eventType=models.CharField(max_length=32,choices=types)
-  happened=models.DateTimeField(auto_now_add=True)
+  comment=models.CharField(max_length=255,blank=True)
+  registred=models.DateTimeField(auto_now_add=True)
+  client=models.ForeignKey(Client)
 
 class Diff(models.Model):
 
   def __unicode__(self):
-    pass
+    return self.path
 
-  event=models.ForeignKey(Event)
   path=models.CharField(max_length=512)
   state=models.CharField(max_length=32,choices=states)
+  event=models.ForeignKey(Event)
+  fileSet=models.ForeignKey(FileSet)
