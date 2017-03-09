@@ -9,6 +9,7 @@ import tasker.views
 import licenses.views
 import certs.views
 import mail.views
+import hashez.views
 
 admin.autodiscover()
 
@@ -63,4 +64,7 @@ urlpatterns = [
     url(r'^mail/list/(?P<model>\w+)/(?P<pk>\w+)/$',mail.views.List.as_view()),
     url(r'^mail/create/(?P<model>\w+)/$',mail.views.Create.as_view()),
     url(r'^mail/update/(?P<model>\w+)/(?P<pk>\w+)/$',mail.views.Update.as_view()),
+    #hashez
+    url(r'^hashez/$',hashez.views.Simple.as_view()),
+    url(r'^hashez/events/Client/(?P<pk>\w+)/$',hashez.views.EventList.as_view()),
 ]

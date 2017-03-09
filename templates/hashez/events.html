@@ -1,0 +1,15 @@
+{% extends 'hashez/leftmenu.html' %}
+{% block content %}
+<table>
+<tr>
+  <td>{{client}}</td><td>{{timefrom}}</td><td>{{timeto}}</td>
+</tr>
+{% for event in object_list %}
+<tr>
+  <td>{{event.registred}}</td>
+  <td>{{event.eventType}}</td>
+  <td>{{event.comment}}</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}
