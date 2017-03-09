@@ -51,15 +51,14 @@ class Event(models.Model):
          ('NEWFILESET','NEWFILESET'),
         )
 
-  results=(('PASS':'PASS'),
-           ('FAIL':'FAIL')
+  results=(('PASS','PASS'),
+           ('FAIL','FAIL')
           )
 
   def __unicode__(self):
     return unicode(self.eventType)
 
   eventType=models.CharField(max_length=32,choices=types)
-  result=models.CharField(max_length=32,choices=results,blank=True,null=True)
   comment=models.CharField(max_length=255,blank=True,null=True)
   registred=models.DateTimeField(auto_now_add=True)
   client=models.ForeignKey(Client)
