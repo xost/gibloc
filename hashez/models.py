@@ -8,8 +8,6 @@ states=(('OK','OK'),
         ('UPDATED','UPDATED'),
         ('FILESYSTEMERROR','FILESYSTEMERROR'),
         ('CRYPTOERROR','CRYPTOERROR'),
-        ('NEW','NEW'),
-        ('EMPTY','EMPTY'),
        )
 
 class Client(models.Model):
