@@ -67,4 +67,5 @@ urlpatterns = [
     #hashez
     url(r'^hashez/$',hashez.views.Simple.as_view()),
     url(r'^hashez/events/Client/(?P<pk>\w+)/$',hashez.views.EventList.as_view()),
+    url(r'^hashez/clients/(?P<pk>\w+)/$',hashez.views.ClientDetail.as_view()),
 ]

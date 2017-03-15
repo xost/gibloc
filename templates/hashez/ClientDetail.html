@@ -1,0 +1,22 @@
+{% extends 'hashez/leftmenu.html' %}
+{% block content %}
+
+<table>
+<tr>
+<td>{{object.client}}</td>
+<td>{{object.descr}}</td>
+<td>{{object.registred}}</td>
+</tr>
+</table>
+
+<table>
+<tr>
+<td align="center" width="75%">
+{% for item in files %}
+  {{item}}
+{% endfor %}
+</td>
+</tr>
+</table>
+
+{% endblock %}

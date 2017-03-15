@@ -22,7 +22,7 @@ class Client(models.Model):
 class FileSet(models.Model):
 
   def __unicode__(self):
-    return self.id
+    return u"{0}".format(self.id)
 
   registred=models.DateTimeField(auto_now_add=True)
   client=models.ForeignKey(Client)
@@ -41,6 +41,16 @@ class File(models.Model):
   class Meta():
     unique_together=('path','fileSet')
 
+class BadFiles(models.Model):
+
+  def __unicode__(self):
+    return self.path
+
+  path=models.CharField(max_length=512)
+  checksum=models.BinaryField(null=True)
+  state=models.CharField(max_length=32,choices=states)
+  fileSet=models.ForeignKey(FileSet,null=True,blank=True)
+
 class Event(models.Model):
 
   types=(('CKECK','CHECK'),
@@ -57,16 +67,8 @@ class Event(models.Model):
     return unicode(self.eventType)
 
   eventType=models.CharField(max_length=32,choices=types)
-  comment=models.CharField(max_length=255,blank=True,null=True)
+  result=models.CharField(max_length=32,choices=results,blank=True,null=True)
   registred=models.DateTimeField(auto_now_add=True)
-  client=models.ForeignKey(Client)
-
-class Diff(models.Model):
-
-  def __unicode__(self):
-    return self.path
-
-  path=models.CharField(max_length=512)
-  state=models.CharField(max_length=32,choices=states)
-  event=models.ForeignKey(Event)
-  fileSet=models.ForeignKey(FileSet)
+  client=models.ForeignKey(Client,null=True,blank=True)
+  fileSet=models.ForeignKey(FileSet,null=True,blank=True)
+  badFiles=models.ForeignKey(BadFiles,null=True,blank=True)
