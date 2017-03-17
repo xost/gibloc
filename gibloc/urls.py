@@ -66,6 +66,6 @@ urlpatterns = [
     url(r'^mail/update/(?P<model>\w+)/(?P<pk>\w+)/$',mail.views.Update.as_view()),
     #hashez
     url(r'^hashez/$',hashez.views.Simple.as_view()),
-    url(r'^hashez/events/Client/(?P<pk>\w+)/$',hashez.views.EventList.as_view()),
-    url(r'^hashez/clients/(?P<pk>\w+)/$',hashez.views.ClientDetail.as_view()),
+    url(r'^hashez/events/client/(?P<pk>\w+)/$',hashez.views.EventList.as_view()),
+    url(r'^hashez/detail/client/(?P<pk>\w+)/$',hashez.views.ClientDetail.as_view()),
 ]

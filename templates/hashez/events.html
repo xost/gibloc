@@ -1,14 +1,40 @@
 {% extends 'hashez/leftmenu.html' %}
 {% block content %}
-<table>
+<table class="center">
 <tr>
-  <td>{{client}}</td><td>{{timefrom}}</td><td>{{timeto}}</td>
+  <td>Тип события</td>
+  <td>Результат выполнения</td>
+  <td>Время события</td>
+  <td>Ошибки проверки</td>
+  <td>Проверено фалов</td>
+  <td>Сопроводительный документ</td>
 </tr>
 {% for event in object_list %}
-<tr>
+<tr class={% cycle "bg_a" "bg_b"%}>
+  <td >{{event.eventType}}</td>
+  <td>{{event.result}}</td>
   <td>{{event.registred}}</td>
-  <td>{{event.eventType}}</td>
-  <td>{{event.comment}}</td>
+  <td>
+    {% if event.badFiles_id %}
+      <a href="/hashez/badFiles/{{event.badFiles_id}}">{{event.badFiles_id}}</a>
+    {% else %}
+      ---
+    {% endif %}
+  </td>
+  <td>
+    {% if event.fileSet_id %}
+      <a href="/hashez/fileSet/{{event.fileSet_id}}">{{event.files_count}}</a>
+    {% else %}
+      ---
+    {% endif %}
+  </td>
+  <td>
+    {% if event_badFiles_id %}
+      <a href="/hashez/reports/###">###</a>
+    {% else %}
+      ---
+    {% endif %}
+  </td>
 </tr>
 {% endfor %}
 </table>

@@ -3,20 +3,32 @@
 
 <table>
 <tr>
+<td>Имя клиента</td>
 <td>{{object.client}}</td>
+<tr>
+</tr>
+<td>Описание</td>
 <td>{{object.descr}}</td>
+<tr>
+</tr>
+<td>Зарегистрирован</td>
 <td>{{object.registred}}</td>
+</tr>
+<tr>
+<td>Время последнего события</td>
+<td><a href="/hashez/events/client/{{object.id}}/?sort=DESC">{{lastEvent.registred}}</a></td>
 </tr>
 </table>
 
 <table>
 <tr>
-<td align="center" width="75%">
-{% for item in files %}
-  {{item}}
-{% endfor %}
-</td>
+<td>Файл</td><td>Результат проверки</td><td>Время проверки</td>
 </tr>
+{% for item in files %}
+<tr class={% cycle "bg_a" "bg_b" %}>
+<td>{{item}}</td><td>{{item.state}}</td><td>{{item.updated}}</td>
+</tr>
+{% endfor %}
 </table>
 
 {% endblock %}

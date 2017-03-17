@@ -11,13 +11,32 @@ class Simple(TemplateView):
 
 class EventList(ListView):
   template_name='hashez/events.html'
+  sqlQuery=""" SELECT E.id,
+                      E.eventType,
+                      E.result,
+                      E.registred,
+                      E.fileSet_id,
+                      E.badFiles_id,
+                      (
+                        SELECT count(*)
+                        FROM hashez_file F
+                        WHERE F.fileSet_id=E.fileSet_id
+                      ) as files_count
+               FROM hashez_event E
+               WHERE E.client_id={0}
+               ORDER BY E.id {1}
+           """
 
   def dispatch(self,request,*args,**kwargs):
     self.clientId=kwargs.get('pk')
+    self.sort=request.GET.get('sort');
     return super(EventList,self).dispatch(request,*args,**kwargs)
   
   def get_queryset(self):
-    return models.Event.objects.filter(client_id=self.clientId)
+    events=models.Event.objects.filter(client_id=self.clientId)
+    sqlQuery=self.sqlQuery.format(self.clientId,"DESC" if self.sort=="DESC" else "ASC");
+    qset=models.Event.objects.raw(sqlQuery)
+    return qset
 
 class ClientDetail(DetailView):
   template_name='hashez/clientDetail.html'
@@ -32,8 +51,9 @@ class ClientDetail(DetailView):
     fileSets=models.FileSet.objects.filter(client_id=self.clientId)
     fileSet=fileSets.latest('pk')
     events=models.Event.objects.filter(client_id=self.clientId)
+    lastEvent=events.latest('pk')
     files=models.File.objects.filter(fileSet=fileSet)
     kwargs['fileSets']=fileSets
-    kwargs['events']=events
+    kwargs['lastEvent']=lastEvent
     kwargs['files']=files
     return super(ClientDetail,self).get_context_data(**kwargs)

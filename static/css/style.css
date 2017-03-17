@@ -75,6 +75,10 @@ td.head_right{
   background:   #E0FFFF;
 }
 
+.bg_c{
+  background:   gray;
+}
+
 a.small{
   font-size:  13px;
   font-style: italic;
