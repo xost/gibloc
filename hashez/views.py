@@ -69,3 +69,13 @@ class FileSet(ListView):
   def get_queryset(self):
     return self.model.objects.filter(fileSet_id=self.fileSetId)
 
+class BadFiles(ListView):
+  template_name="hashez/badFiles.html"
+  model=models.BadFiles
+
+  def dispatch(self,request,*args,**kwargs):
+    self.fileSetId=kwargs.get("pk")
+    return super(BadFiles,self).dispatch(request,*args,**kwargs)
+
+  def get_queryset(self):
+    return self.model.objects.filter(fileSet_id=self.fileSetId)
