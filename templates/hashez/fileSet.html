@@ -1,0 +1,17 @@
+{% extends 'hashez/leftmenu.html' %}
+{% block content %}
+<table>
+<tr>
+<td>Полный путь</td>
+<td>Состояние</td>
+<td>Обновлен</td>
+</tr>
+{% for object in object_list %}
+<tr>
+<td>{{object.path}}</td>
+<td>{{object.state}}</td>
+<td>{{object.updated}}</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

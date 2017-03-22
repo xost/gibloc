@@ -57,3 +57,15 @@ class ClientDetail(DetailView):
     kwargs['lastEvent']=lastEvent
     kwargs['files']=files
     return super(ClientDetail,self).get_context_data(**kwargs)
+
+class FileSet(ListView):
+  template_name="hashez/fileSet.html"
+  model=models.File
+
+  def dispatch(self,request,*args,**kwargs):
+    self.fileSetId=kwargs.get('pk');
+    return super(FileSet,self).dispatch(request,*args,**kwargs)
+
+  def get_queryset(self):
+    return self.model.objects.filter(fileSet_id=self.fileSetId)
+
