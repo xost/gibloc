@@ -3,6 +3,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.contrib.auth.models import User as Person
 
 states=(('OK','OK'),
         ('UPDATED','UPDATED'),
@@ -71,3 +72,21 @@ class BadFiles(models.Model):
   checksum=models.BinaryField(null=True)
   state=models.CharField(max_length=32,choices=states)
   event=models.ForeignKey(Event,null=True)
+
+class Comment(models.Model):
+
+  defaultTitle="""
+                 
+               """
+
+  def __unicode__(self):
+    return 0
+
+  docNo=models.IntegerField()
+  registred=models.DateTimeField(auto_now_add=True)
+  title=models.TextField()
+  reason=models.TextField()
+  badFiles=models.ForeignKey(BadFiles,null=True)
+  action=models.TextField()
+  event=models.ForeignKey(Event,null=True)
+  person=models.ForeignKey(Person)
