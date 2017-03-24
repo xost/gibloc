@@ -41,19 +41,9 @@ class File(models.Model):
   class Meta():
     unique_together=('path','fileSet')
 
-class BadFiles(models.Model):
-
-  def __unicode__(self):
-    return self.path
-
-  path=models.CharField(max_length=512)
-  checksum=models.BinaryField(null=True)
-  state=models.CharField(max_length=32,choices=states)
-  fileSet=models.ForeignKey(FileSet,null=True,blank=True)
-
 class Event(models.Model):
 
-  types=(('CKECK','CHECK'),
+  types=((u'Проверка','CHECK'),
          ('UPDATE','UPDATE'),
          ('NEWCLIENT','NEWCLIENT'),
          ('NEWFILESET','NEWFILESET'),
@@ -71,4 +61,13 @@ class Event(models.Model):
   registred=models.DateTimeField(auto_now_add=True)
   client=models.ForeignKey(Client,null=True,blank=True)
   fileSet=models.ForeignKey(FileSet,null=True,blank=True)
-  badFiles=models.ForeignKey(BadFiles,null=True,blank=True)
+
+class BadFiles(models.Model):
+
+  def __unicode__(self):
+    return self.path
+
+  path=models.CharField(max_length=512)
+  checksum=models.BinaryField(null=True)
+  state=models.CharField(max_length=32,choices=states)
+  event=models.ForeignKey(Event,null=True)

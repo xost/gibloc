@@ -6,17 +6,17 @@
   <td>Результат выполнения</td>
   <td>Время события</td>
   <td>Ошибки проверки</td>
-  <td>Проверено фалов</td>
+  <td>Всего файлов</td>
   <td>Сопроводительный документ</td>
 </tr>
 {% for event in object_list %}
 <tr class={% cycle "bg_a" "bg_b"%}>
-  <td >{{event.eventType}}</td>
+  <td>{{event.eventType}}</td>
   <td>{{event.result}}</td>
   <td>{{event.registred}}</td>
   <td>
-    {% if event.badFiles_id %}
-      <a href="/hashez/badFiles/{{event.fileSet_id}}">>>></a>
+    {% if event.badFiles_event_id %}
+      <a href="/hashez/badFiles/{{event.id}}">>>></a>
     {% else %}
       ---
     {% endif %}

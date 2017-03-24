@@ -16,12 +16,16 @@ class EventList(ListView):
                       E.result,
                       E.registred,
                       E.fileSet_id,
-                      E.badFiles_id,
                       (
                         SELECT count(*)
                         FROM hashez_file F
                         WHERE F.fileSet_id=E.fileSet_id
-                      ) as files_count
+                      ) as files_count,
+                      (
+                        SELECT id
+                        FROM hashez_badfiles B
+                        WHERE B.event_id=E.id
+                      ) as badFiles_event_id
                FROM hashez_event E
                WHERE E.client_id={0}
                ORDER BY E.id {1}
@@ -74,8 +78,8 @@ class BadFiles(ListView):
   model=models.BadFiles
 
   def dispatch(self,request,*args,**kwargs):
-    self.fileSetId=kwargs.get("pk")
+    self.eventId=kwargs.get("pk")
     return super(BadFiles,self).dispatch(request,*args,**kwargs)
 
   def get_queryset(self):
-    return self.model.objects.filter(fileSet_id=self.fileSetId)
+    return self.model.objects.filter(event_id=self.eventId)

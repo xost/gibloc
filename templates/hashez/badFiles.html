@@ -4,13 +4,13 @@
 <tr>
 <td>Полный путь</td>
 <td>Состояние</td>
-<td>Обновлен</td>
+<td>Событие</td>
 </tr>
 {% for object in object_list %}
 <tr>
 <td>{{object.path}}</td>
 <td>{{object.state}}</td>
-<td>{{object.updated}}</td>
+<td>{{object.event_id}}</td>
 </tr>
 {% endfor %}
 </table>
