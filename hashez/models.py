@@ -44,7 +44,7 @@ class File(models.Model):
 
 class Event(models.Model):
 
-  types=((u'Проверка','CHECK'),
+  types=((u'CHECK','CHECK'),
          ('UPDATE','UPDATE'),
          ('NEWCLIENT','NEWCLIENT'),
          ('NEWFILESET','NEWFILESET'),
@@ -89,4 +89,4 @@ class Comment(models.Model):
   badFiles=models.ForeignKey(BadFiles,null=True)
   action=models.TextField()
   event=models.ForeignKey(Event,null=True)
-  person=models.ForeignKey(Person)
+  person=models.ForeignKey(Person,related_name='hashez_comment_person')

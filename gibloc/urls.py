@@ -70,4 +70,5 @@ urlpatterns = [
     url(r'^hashez/detail/client/(?P<pk>\w+)/$',hashez.views.ClientDetail.as_view()),
     url(r'^hashez/fileSet/(?P<pk>\w+)/$',hashez.views.FileSet.as_view()),
     url(r'^hashez/badFiles/(?P<pk>\w+)/$',hashez.views.BadFiles.as_view()),
+    url(r'^hashez/report/$',hashez.views.Report.as_view()),
 ]

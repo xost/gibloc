@@ -1,13 +1,28 @@
-{% extends 'hashez/leftmenu.html' %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01// EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
+</head>
+<body>
 {% block content %}
-<form method="GET" action="">
-<table>
-{{form.as_table}}
+<table class="center">
+<tr>
+<td colspan=2><h3>Отчёт о проверке контрольных сумм критичных файлов на клиенте:</h3></td>
+</tr>
+<tr>
+<td>{{client}}</td>
+<td>{{client.descr}}</td>
+</tr>
+<tr>
+<td colspan=2><h4>за период:</h4></td>
+</tr>
+<tr>
+<td>c: {{fromDate}}</td>
+<td>по: {{toDate}}</td>
+</tr>
 </table>
-<input type="hidden" name="sort" value="DESC"/>
-<input type="submit" name="action" value="OK" text="!!!"/>
-<a href="/hashez/report/?clientId={{clientId}}&fromDate={{fromDate}}&toDate={{toDate}}" target="_blank">Отчёт</a>
-</form>
+
 <table class="center">
 <tr>
   <td>Тип события</td>
@@ -46,4 +61,6 @@
 </tr>
 {% endfor %}
 </table>
+
 {% endblock %}
+</body>

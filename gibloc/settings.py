@@ -238,6 +238,7 @@ SMTP_PORT='25'
 SMTP_LOGIN=''
 SMTP_PASSWD=''
 
-DATE_INPUT_FORMATS=('%d/%m/%Y','%d.%m.%Y',)
+#DATE_INPUT_FORMATS=('%d/%m/%Y','%d.%m.%Y',)
+DATE_INPUT_FORMATS=('%d/%m/%Y',)
 
 TEST_RUNNER='django.test.runner.DiscoverRunner'
