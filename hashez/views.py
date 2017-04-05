@@ -5,8 +5,6 @@ from django.views.generic import ListView,TemplateView,DetailView
 import datetime
 import models,forms,gibloc
 
-# Create your views here.
-
 class Simple(TemplateView):
   template_name="hashez/simple.html"
 
@@ -22,7 +20,7 @@ class Events():
                         WHERE F.fileSet_id=E.fileSet_id
                       ) as files_count,
                       (
-                        SELECT id
+                        SELECT count(*)
                         FROM hashez_badfiles B
                         WHERE B.event_id=E.id
                       ) as badFiles_event_id

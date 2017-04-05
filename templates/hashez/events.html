@@ -19,12 +19,12 @@
 </tr>
 {% for event in object_list %}
 <tr class={% cycle "bg_a" "bg_b"%}>
-  <td>{{event.eventType}}</td>
-  <td>{{event.result}}</td>
+  <td>{{event.get_eventType_display}}</td>
+  <td>{{event.get_result_display}}</td>
   <td>{{event.registred}}</td>
   <td>
     {% if event.badFiles_event_id %}
-      <a href="/hashez/badFiles/{{event.id}}">>>></a>
+      <a href="/hashez/badFiles/{{event.id}}">{{event.badFiles_event_id}}</a>
     {% else %}
       ---
     {% endif %}

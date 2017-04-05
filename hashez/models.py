@@ -44,14 +44,14 @@ class File(models.Model):
 
 class Event(models.Model):
 
-  types=((u'CHECK','CHECK'),
-         ('UPDATE','UPDATE'),
-         ('NEWCLIENT','NEWCLIENT'),
-         ('NEWFILESET','NEWFILESET'),
+  types=((u'CHECK','Контроль'),
+         ('UPDATE','Пересчёт'),
+         ('NEWCLIENT','Новый клиент'),
+         ('NEWFILESET','Новый набор файлов'),
         )
 
-  results=(('PASS','PASS'),
-           ('FAIL','FAIL')
+  results=(('PASS','Успешно'),
+           ('FAIL','Неудачно')
           )
 
   def __unicode__(self):
