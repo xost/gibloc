@@ -28,7 +28,7 @@ urlpatterns = [
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$',TemplateView.as_view(template_name='topmenu.html')),
-    url(r'^accounts/login/$',django.contrib.auth.views.login,{'template_name':'accounts/login.html'}),
+    url(r'^accounts/login/$',django.contrib.auth.views.login,{'template_name':'accounts/login.html'},name='login'),
     url(r'^accounts/logout/$',django.contrib.auth.views.logout,{'next_page':'/'}),
     #urls for guests
     url(r'^squidguard/whitesites/$',squidguard.views.WhiteSites.as_view()),

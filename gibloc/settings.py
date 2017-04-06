@@ -56,7 +56,7 @@ USE_TZ = True
 MEDIA_ROOT = ''
 
 #
-LOGIN_URL='/accounts/login'
+LOGIN_URL='/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a

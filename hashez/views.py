@@ -2,13 +2,14 @@
 
 from django.shortcuts import render
 from django.views.generic import ListView,TemplateView,DetailView
+from gibloc.mixins import LoginRequiredMixin
 import datetime
 import models,forms,gibloc
 
-class Simple(TemplateView):
+class Simple(LoginRequiredMixin,TemplateView):
   template_name="hashez/simple.html"
 
-class Events():
+class Events(LoginRequiredMixin):
   sqlQuery=""" SELECT E.id,
                       E.eventType,
                       E.result,
@@ -69,7 +70,7 @@ class EventList(ListView,Events):
     kwargs['clientId']=self.clientId
     return super(EventList,self).get_context_data(**kwargs)
 
-class ClientDetail(DetailView):
+class ClientDetail(LoginRequiredMixin,DetailView):
   template_name='hashez/clientDetail.html'
   model=models.Client
   clientId=0
@@ -89,7 +90,7 @@ class ClientDetail(DetailView):
     kwargs['files']=files
     return super(ClientDetail,self).get_context_data(**kwargs)
 
-class FileSet(ListView):
+class FileSet(LoginRequiredMixin,ListView):
   template_name="hashez/fileSet.html"
   model=models.File
 
@@ -100,7 +101,7 @@ class FileSet(ListView):
   def get_queryset(self):
     return self.model.objects.filter(fileSet_id=self.fileSetId)
 
-class BadFiles(ListView):
+class BadFiles(LoginRequiredMixin,ListView):
   template_name="hashez/badFiles.html"
   model=models.BadFiles
 
