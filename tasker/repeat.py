@@ -5,6 +5,7 @@ from datetime import timedelta,date
 import models
 import actions
 
+
 class EveryNDay(object):
   name=u'Каждый N день'
 

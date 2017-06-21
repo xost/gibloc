@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01// EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
+</head>
+<body>
+{% block content %}
+<table align="center">
+<tr><td>АРМ:</td><td>{{client.client}}</td></tr>
+<tr><td>Описание:</td><td>{{client.descr}}</td></tr>
+<tr><td colspan=2>Список файлов подлежащих проверке(создано {{fileSet.registred}}):</td></tr>
+</table>
+<br/>
+<table>
+<tr>
+<td>Полный путь</td>
+<!--
+<td>Состояние</td>
+<td>Обновлен</td>
+-->
+</tr>
+{% for object in object_list %}
+<tr>
+<td>{{object.path}}</td>
+<!--
+<td>{{object.state}}</td>
+<td>{{object.updated}}</td>
+-->
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

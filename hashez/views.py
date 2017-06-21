@@ -92,14 +92,26 @@ class ClientDetail(LoginRequiredMixin,DetailView):
 
 class FileSet(LoginRequiredMixin,ListView):
   template_name="hashez/fileSet.html"
-  model=models.File
+
+  def get(self,request,*args,**kwargs):
+    action=request.GET.get('action')
+    if(action=="report"):
+      self.template_name='hashez/fileSetReport.html'
+    return super(FileSet,self).get(request,*args,**kwargs)
 
   def dispatch(self,request,*args,**kwargs):
     self.fileSetId=kwargs.get('pk');
     return super(FileSet,self).dispatch(request,*args,**kwargs)
 
   def get_queryset(self):
-    return self.model.objects.filter(fileSet_id=self.fileSetId)
+    return models.File.objects.filter(fileSet_id=self.fileSetId)
+
+  def get_context_data(self,**kwargs):
+    fileSet=models.FileSet.objects.get(pk=self.fileSetId)
+    clientId=fileSet.client_id
+    kwargs['fileSet']=fileSet
+    kwargs['client']=models.Client.objects.get(pk=clientId)
+    return super(FileSet,self).get_context_data(**kwargs)
 
 class BadFiles(LoginRequiredMixin,ListView):
   template_name="hashez/badFiles.html"
