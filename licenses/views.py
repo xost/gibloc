@@ -137,7 +137,8 @@ class DetailOfOwner(Detail):
 
 class ReportOfLicense(Detail):
   template_name=''
-  templates={'CryptoPro39':'licenses/reportoflicensecryptopro.html',
+  templates={'CryptoPro40':'licenses/reportoflicensecryptopro.html',
+             'CryptoPro39':'licenses/reportoflicensecryptopro.html',
              'CryptoPro36':'licenses/reportoflicensecryptopro.html',
              'CryptoPro30':'licenses/reportoflicensecryptopro.html',
              'notfound':'licenses/notfound.html'
